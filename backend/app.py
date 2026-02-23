@@ -30,12 +30,6 @@ def index():
     return send_from_directory(frontend_dir, "index.html")
 
 
-@app.route("/<path:path>")
-def serve_static(path):
-    """Serve static files from frontend."""
-    return send_from_directory(frontend_dir, path)
-
-
 @app.route("/api/jobs", methods=["GET"])
 def api_get_jobs():
     """Get all jobs with optional filters."""
@@ -95,6 +89,12 @@ def api_get_stats():
         "new_jobs": len(new_jobs),
         "platform_counts": platform_counts,
     })
+
+
+@app.route("/<path:path>")
+def serve_static(path):
+    """Serve static files from frontend (must be last to avoid shadowing API)."""
+    return send_from_directory(frontend_dir, path)
 
 
 def main():

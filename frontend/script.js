@@ -194,6 +194,10 @@ async function triggerScrape() {
   try {
     const res = await fetch(`${API_BASE}/scrape`, { method: 'POST' });
     const data = await res.json();
+    if (!res.ok) {
+      alert(`Scraping failed: ${data.error || res.statusText || 'Unknown error'}`);
+      return;
+    }
     alert(`Scraping completed. ${data.new_jobs_count || 0} new jobs found.`);
     loadJobs();
     loadStats();

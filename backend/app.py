@@ -23,6 +23,9 @@ CORS(app)
 frontend_dir = PROJECT_ROOT / "frontend"
 scheduler = JobScheduler()
 
+# Initialize database on app startup
+init_database()
+
 
 @app.route("/")
 def index():

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Notification Tracker</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Job Notification Tracker</h1>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <button id="refreshBtn" class="refresh-btn">Refresh</button>
+                <button id="scrapeBtn" class="scrape-btn">Scrape Now</button>
+            </div>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-label">Total Jobs</span>
+                <span id="totalJobs" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">New Jobs</span>
+                <span id="newJobs" class="stat-value new-badge">0</span>
+            </div>
+        </div>
+
+        <div class="filters-section">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search jobs by title or company...">
+                <button id="searchBtn">Search</button>
+            </div>
+            <div class="filters">
+                <select id="locationFilter">
+                    <option value="">All Locations</option>
+                </select>
+                <select id="experienceFilter">
+                    <option value="">All Experience Levels</option>
+                    <option value="entry">Entry Level</option>
+                    <option value="mid">Mid Level</option>
+                    <option value="senior">Senior</option>
+                </select>
+                <select id="jobTypeFilter">
+                    <option value="">All Job Types</option>
+                    <option value="full-time">Full Time</option>
+                    <option value="part-time">Part Time</option>
+                    <option value="contract">Contract</option>
+                    <option value="remote">Remote</option>
+                </select>
+                <select id="sourceFilter">
+                    <option value="">All Sources</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Indeed">Indeed</option>
+                    <option value="Naukri">Naukri</option>
+                </select>
+                <button id="clearFilters" class="clear-btn">Clear Filters</button>
+            </div>
+        </div>
+
+        <div id="loadingIndicator" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading jobs...</p>
+        </div>
+
+        <div id="jobsContainer" class="jobs-container">
+            <!-- Jobs loaded dynamically -->
+        </div>
+
+        <div id="noJobs" class="no-jobs" style="display: none;">
+            <p>No jobs found. Adjust filters or click "Scrape Now" to fetch new jobs.</p>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
